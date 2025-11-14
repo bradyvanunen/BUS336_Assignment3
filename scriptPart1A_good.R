@@ -1,7 +1,7 @@
-# =====================================================
 # BUS 336 - Assignment 3 (Part 1A)
-
-# Team: Brady Van Unen, Steven Duong, Darian Sidhu
+# Steven Duong
+# Darian Sidhu
+# Brady Van Unen
 
 library(tidyverse)
 
@@ -53,4 +53,17 @@ getwd()
 list.files(recursive = TRUE)
 
 list.files(recursive = TRUE)
+list.dirs()
+write.csv(train_plot,
+          "tableau_exports/train_sales_for_tableau.csv",
+          row.names = FALSE)
+train_preds_df <- data.frame(
+  Year = train$Year,
+  Month = train$Month,
+  Actual = train$Sales,
+  Predicted = train_pred
+)
 
+write.csv(train_preds_df,
+          "tableau_exports/train_actual_vs_predicted.csv",
+          row.names = FALSE)

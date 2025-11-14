@@ -1,3 +1,12 @@
+# BUS 336 - Assignment 3 (Part 1B)
+# Steven Duong
+# Darian Sidhu
+# Brady Van Unen
+
+
+
+
+
 honda <- read.csv("data/Honda_Sales.csv")
 head(honda); str(honda); names(honda)
 
@@ -75,3 +84,21 @@ mape_train <- mape(train$Sales, train_pred)
 rmse_train
 mae_train
 mape_train
+
+test$Month_Factor <- factor(test$Month, levels = levels(train$Month_Factor))
+test_pred <- predict(bestmodel, newdata = test)
+
+rmse_test <- rmse(test$Sales, test_pred)
+mae_test  <- mae(test$Sales, test_pred)
+mape_test <- mape(test$Sales, test_pred)
+
+rmse_test
+mae_test
+mape_test
+
+Test R-squared
+SSE_test <- sum((test$Sales - test_pred)^2)
+SST_test <- sum((test$Sales - mean(test$Sales))^2)
+r2_test  <- 1 - SSE_test / SST_test
+
+r2_test
